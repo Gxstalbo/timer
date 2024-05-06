@@ -3,10 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Temporizador</title>
+<style>
+    body {
+        background-color: black; /* Fondo negro para todo el cuerpo del documento */
+        color: white; /* Texto blanco para mejorar la visibilidad en fondo negro */
+        font-family: Arial, sans-serif; /* Fuente más legible */
+    }
+    #time {
+        font-weight: bold; /* Texto en negrita */
+        font-size: 24px; /* Tamaño de fuente grande para fácil lectura */
+    }
+    .green { color: lime; } /* Color verde claro para alta visibilidad */
+    .yellow { color: yellow; }
+    .red { color: red; }
+</style>
 <script>
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
-    setInterval(function () {
+    var interval = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -15,8 +29,21 @@ function startTimer(duration, display) {
 
         display.textContent = minutes + ":" + seconds;
 
+        // Cambiar color del temporizador
+        if (minutes < 1) {
+            display.className = 'red'; // Menos de 1 minuto
+        } else if (minutes < 3) {
+            display.className = 'yellow'; // Menos de 3 minutos
+        } else if (minutes < 5) {
+            display.className = 'green'; // Menos de 5 minutos
+        } else {
+            display.className = ''; // Resto del tiempo sin color específico
+        }
+
         if (--timer < 0) {
-            timer = duration;
+            clearInterval(interval);
+            display.textContent = "00:00";
+            display.className = 'red'; // Termina en rojo
         }
     }, 1000);
 }
