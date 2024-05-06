@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Temporizador</title>
+<title>La charla debería terminar en: </title>
 <style>
     body {
         background-color: black; /* Fondo negro para todo el cuerpo del documento */
@@ -34,7 +34,7 @@ function startTimer(duration, display) {
             display.className = 'red'; // Menos de 1 minuto
         } else if (minutes < 3) {
             display.className = 'yellow'; // Menos de 3 minutos
-        } else if (minutes < 5) {
+        } else if (minutes < 10) {
             display.className = 'green'; // Menos de 5 minutos
         } else {
             display.className = ''; // Resto del tiempo sin color específico
