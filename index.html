@@ -21,11 +21,11 @@
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
     var interval = setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+        minutes = parseInt(timer / 60, 5);
+        seconds = parseInt(timer % 60, 5);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+        minutes = minutes < 5 ? "0" + minutes : minutes;
+        seconds = seconds < 5 ? "0" + seconds : seconds;
 
         display.textContent = minutes + ":" + seconds;
 
@@ -34,7 +34,7 @@ function startTimer(duration, display) {
             display.className = 'red'; // Menos de 1 minuto
         } else if (minutes < 3) {
             display.className = 'yellow'; // Menos de 3 minutos
-        } else if (minutes < 10) {
+        } else if (minutes < 5) {
             display.className = 'green'; // Menos de 5 minutos
         } else {
             display.className = ''; // Resto del tiempo sin color específico
@@ -56,6 +56,6 @@ window.onload = function () {
 </script>
 </head>
 <body>
-<div>La charla debería terminar en: <span id="time">10:00</span> minutos</div>
+<div>La charla debería terminar en: <span id="time">05:00</span> minutos</div>
 </body>
 </html>
